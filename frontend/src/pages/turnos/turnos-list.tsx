@@ -32,6 +32,7 @@ const TurnosTablesPage = () => {
     { label: 'Fecha', title: 'fecha', date: 'true' },
     { label: 'HoradeInicio', title: 'hora_inicio', date: 'true' },
     { label: 'HoradeFin', title: 'hora_fin', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
 
     {
@@ -138,6 +139,7 @@ const TurnosTablesPage = () => {
             <Link href={'/turnos/turnos-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableTurnos
             filterItems={filterItems}

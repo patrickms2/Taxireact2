@@ -33,7 +33,9 @@ const EstadisticasTablesPage = () => {
 
   const [filters] = useState([
     { label: 'Fecha', title: 'fecha', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
+
     { label: 'Departamento', title: 'departamento' },
 
     {
@@ -142,6 +144,7 @@ const EstadisticasTablesPage = () => {
             </Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableEstadisticas
             filterItems={filterItems}

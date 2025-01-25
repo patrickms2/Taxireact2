@@ -306,7 +306,10 @@ router.get(
 
     const globalAccess = req.currentUser.app_role.globalAccess;
 
-    const payload = await EstadisticasDBApi.findAll(req.query, globalAccess);
+    const currentUser = req.currentUser;
+    const payload = await EstadisticasDBApi.findAll(req.query, globalAccess, {
+      currentUser,
+    });
     if (filetype && filetype === 'csv') {
       const fields = ['id', 'fecha'];
       const opts = { fields };
@@ -353,8 +356,10 @@ router.get(
   wrapAsync(async (req, res) => {
     const globalAccess = req.currentUser.app_role.globalAccess;
 
+    const currentUser = req.currentUser;
     const payload = await EstadisticasDBApi.findAll(req.query, globalAccess, {
       countOnly: true,
+      currentUser,
     });
 
     res.status(200).send(payload);

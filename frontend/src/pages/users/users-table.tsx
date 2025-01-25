@@ -35,7 +35,9 @@ const UsersTablesPage = () => {
     { label: 'E-Mail', title: 'email' },
 
     { label: 'App Role', title: 'app_role' },
+
     { label: 'Cooperativadetaxis', title: 'cooperativadetaxi' },
+
     { label: 'Custom Permissions', title: 'custom_permissions' },
   ]);
 

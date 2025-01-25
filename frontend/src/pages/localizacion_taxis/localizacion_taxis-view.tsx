@@ -53,7 +53,11 @@ const Localizacion_taxisView = () => {
           title={removeLastCharacter('View localizacion_taxis')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/localizacion_taxis/localizacion_taxis-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

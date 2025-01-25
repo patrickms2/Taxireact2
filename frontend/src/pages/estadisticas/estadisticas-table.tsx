@@ -33,7 +33,9 @@ const EstadisticasTablesPage = () => {
 
   const [filters] = useState([
     { label: 'Fecha', title: 'fecha', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
+
     { label: 'Departamento', title: 'departamento' },
 
     {

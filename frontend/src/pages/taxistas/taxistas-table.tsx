@@ -36,6 +36,7 @@ const TaxistasTablesPage = () => {
     { label: 'Teléfono', title: 'telefono' },
 
     { label: 'FechadeRegistro', title: 'fecha_registro', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
 
     {

@@ -30,9 +30,10 @@ const TableSampleTaxistas = ({
   filters,
   showGrid,
 }) => {
+  const notify = (type, msg) => toast(msg, { type, position: 'bottom-center' });
+
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const notify = (type, msg) => toast(msg, { type, position: 'bottom-center' });
 
   const pagesList = [];
   const [id, setId] = useState(null);
@@ -46,6 +47,7 @@ const TableSampleTaxistas = ({
       sort: 'desc',
     },
   ]);
+
   const {
     taxistas,
     loading,
@@ -57,9 +59,6 @@ const TableSampleTaxistas = ({
   const focusRing = useAppSelector((state) => state.style.focusRingColor);
   const bgColor = useAppSelector((state) => state.style.bgLayoutColor);
   const corners = useAppSelector((state) => state.style.corners);
-
-  const organizationId = currentUser?.organization?.id;
-
   const numPages =
     Math.floor(count / perPage) === 0 ? 1 : Math.ceil(count / perPage);
   for (let i = 0; i < numPages; i++) {
@@ -71,7 +70,7 @@ const TableSampleTaxistas = ({
     if (request !== filterRequest) setFilterRequest(request);
     const { sort, field } = sortModel[0];
 
-    const query = `?organization=${organizationId}&page=${page}&limit=${perPage}${request}&sort=${sort}&field=${field}`;
+    const query = `?page=${page}&limit=${perPage}${request}&sort=${sort}&field=${field}`;
     dispatch(fetch({ limit: perPage, page, query }));
   };
 
@@ -101,14 +100,6 @@ const TableSampleTaxistas = ({
     setIsModalTrashActive(false);
   };
 
-  const handleEditAction = (id: string) => {
-    router.push(`/taxistas/${id}`);
-  };
-
-  const handleViewAction = (id: string) => {
-    router.push(`/taxistas/taxistas-view/?id=${id}`);
-  };
-
   const handleDeleteModalAction = (id: string) => {
     setId(id);
     setIsModalTrashActive(true);
@@ -124,13 +115,27 @@ const TableSampleTaxistas = ({
   const generateFilterRequests = useMemo(() => {
     let request = '&';
     filterItems.forEach((item) => {
-      filters.find(
+      const isRangeFilter = filters.find(
         (filter) =>
           filter.title === item.fields.selectedField &&
           (filter.number || filter.date),
-      )
-        ? (request += `${item.fields.selectedField}Range=${item.fields.filterValueFrom}&${item.fields.selectedField}Range=${item.fields.filterValueTo}&`)
-        : (request += `${item.fields.selectedField}=${item.fields.filterValue}&`);
+      );
+
+      if (isRangeFilter) {
+        const from = item.fields.filterValueFrom;
+        const to = item.fields.filterValueTo;
+        if (from) {
+          request += `${item.fields.selectedField}Range=${from}&`;
+        }
+        if (to) {
+          request += `${item.fields.selectedField}Range=${to}&`;
+        }
+      } else {
+        const value = item.fields.filterValue;
+        if (value) {
+          request += `${item.fields.selectedField}=${value}&`;
+        }
+      }
     });
     return request;
   }, [filterItems, filters]);
@@ -142,6 +147,7 @@ const TableSampleTaxistas = ({
       setFilterItems(newItems);
     } else {
       loadData(0, '');
+
       setFilterItems(newItems);
     }
   };
@@ -155,11 +161,12 @@ const TableSampleTaxistas = ({
     const name = e.target.name;
 
     setFilterItems(
-      filterItems.map((item) =>
-        item.id === id
-          ? { id, fields: { ...item.fields, [name]: value } }
-          : item,
-      ),
+      filterItems.map((item) => {
+        if (item.id !== id) return item;
+        if (name === 'selectedField') return { id, fields: { [name]: value } };
+
+        return { id, fields: { ...item.fields, [name]: value } };
+      }),
     );
   };
 
@@ -176,13 +183,9 @@ const TableSampleTaxistas = ({
   useEffect(() => {
     if (!currentUser) return;
 
-    loadColumns(
-      handleDeleteModalAction,
-      handleViewAction,
-      handleEditAction,
-      `taxistas`,
-      currentUser,
-    ).then((newCols) => setColumns(newCols));
+    loadColumns(handleDeleteModalAction, `taxistas`, currentUser).then(
+      (newCols) => setColumns(newCols),
+    );
   }, [currentUser]);
 
   const handleTableSubmit = async (id: string, data) => {
@@ -285,7 +288,7 @@ const TableSampleTaxistas = ({
                             name='selectedField'
                             id='selectedField'
                             component='select'
-                            value={filterItem?.fields?.selectedField}
+                            value={filterItem?.fields?.selectedField || ''}
                             onChange={handleChange(filterItem.id)}
                           >
                             {filters.map((selectOption) => (
@@ -307,6 +310,7 @@ const TableSampleTaxistas = ({
                             <Field
                               className={controlClasses}
                               name='filterValue'
+                              id='filterValue'
                               component='select'
                               value={filterItem?.fields?.filterValue || ''}
                               onChange={handleChange(filterItem.id)}
@@ -340,6 +344,9 @@ const TableSampleTaxistas = ({
                                 name='filterValueFrom'
                                 placeholder='From'
                                 id='filterValueFrom'
+                                value={
+                                  filterItem?.fields?.filterValueFrom || ''
+                                }
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -352,6 +359,7 @@ const TableSampleTaxistas = ({
                                 name='filterValueTo'
                                 placeholder='to'
                                 id='filterValueTo'
+                                value={filterItem?.fields?.filterValueTo || ''}
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -372,6 +380,9 @@ const TableSampleTaxistas = ({
                                 placeholder='From'
                                 id='filterValueFrom'
                                 type='datetime-local'
+                                value={
+                                  filterItem?.fields?.filterValueFrom || ''
+                                }
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -385,6 +396,7 @@ const TableSampleTaxistas = ({
                                 placeholder='to'
                                 id='filterValueTo'
                                 type='datetime-local'
+                                value={filterItem?.fields?.filterValueTo || ''}
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -399,6 +411,7 @@ const TableSampleTaxistas = ({
                               name='filterValue'
                               placeholder='Contained'
                               id='filterValue'
+                              value={filterItem?.fields?.filterValue || ''}
                               onChange={handleChange(filterItem.id)}
                             />
                           </div>
@@ -454,8 +467,6 @@ const TableSampleTaxistas = ({
         <ListTaxistas
           taxistas={taxistas}
           loading={loading}
-          onView={handleViewAction}
-          onEdit={handleEditAction}
           onDelete={handleDeleteModalAction}
           currentPage={currentPage}
           numPages={numPages}
@@ -475,7 +486,6 @@ const TableSampleTaxistas = ({
           />,
           document.getElementById('delete-rows-button'),
         )}
-
       <ToastContainer />
     </>
   );

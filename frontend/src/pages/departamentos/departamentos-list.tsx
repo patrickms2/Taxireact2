@@ -133,6 +133,7 @@ const DepartamentosTablesPage = () => {
             </Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableDepartamentos
             filterItems={filterItems}

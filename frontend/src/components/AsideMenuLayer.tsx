@@ -37,7 +37,7 @@ export default function AsideMenuLayer({
 
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector((state) => state.auth);
-  const organizationId = currentUser?.organization?.id;
+  const CooperativadeTaxisId = currentUser?.CooperativadeTaxis?.id;
   const [organizations, setOrganizations] = React.useState(null);
 
   const fetchOrganizations = createAsyncThunk('/org-for-auth', async () => {
@@ -56,7 +56,7 @@ export default function AsideMenuLayer({
   }, [dispatch]);
 
   let organizationName = organizations?.find(
-    (item) => item.id === organizationId,
+    (item) => item.id === CooperativadeTaxisId,
   )?.name;
   if (organizationName?.length > 25) {
     organizationName = organizationName?.substring(0, 25) + '...';

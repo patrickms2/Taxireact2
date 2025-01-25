@@ -34,6 +34,7 @@ const Pagos_serviciosTablesPage = () => {
   const [filters] = useState([
     { label: 'Monto', title: 'monto', number: 'true' },
     { label: 'FechadePago', title: 'fecha_pago', date: 'true' },
+
     { label: 'ServiciodeTaxi', title: 'servicio_taxi' },
 
     {
@@ -154,6 +155,7 @@ const Pagos_serviciosTablesPage = () => {
             </Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TablePagos_servicios
             filterItems={filterItems}

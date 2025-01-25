@@ -139,7 +139,7 @@ export default function WebSite() {
         <FeaturesSection
           projectName={'Taxi'}
           image={['Taxi management dashboard view']}
-          withBg={1}
+          withBg={0}
           features={features_points}
           mainText={`Discover the Power of ${projectName}`}
           subTitle={`Explore how ${projectName} enhances taxi operations with cutting-edge features designed for efficiency and growth.`}

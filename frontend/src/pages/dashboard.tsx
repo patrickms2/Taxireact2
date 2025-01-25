@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   const { rolesWidgets, loading } = useAppSelector((state) => state.roles);
 
-  const organizationId = currentUser?.organization?.id;
+  const organizationId = currentUser?.CooperativadeTaxis?.id;
 
   async function loadData() {
     const entities = [
@@ -88,11 +88,7 @@ const Dashboard = () => {
 
     const requests = entities.map((entity, index) => {
       if (hasPermission(currentUser, `READ_${entity.toUpperCase()}`)) {
-        return axios.get(`/${entity.toLowerCase()}/count`, {
-          params: {
-            organization: organizationId,
-          },
-        });
+        return axios.get(`/${entity.toLowerCase()}/count`);
       } else {
         fns[index](null);
         return Promise.resolve({ data: { count: null } });

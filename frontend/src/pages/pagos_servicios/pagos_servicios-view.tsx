@@ -51,7 +51,11 @@ const Pagos_serviciosView = () => {
           title={removeLastCharacter('View pagos_servicios')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/pagos_servicios/pagos_servicios-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

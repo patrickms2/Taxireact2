@@ -126,6 +126,7 @@ const RolesTablesPage = () => {
             <div id='delete-rows-button'></div>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableRoles
             filterItems={filterItems}

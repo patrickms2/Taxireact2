@@ -30,9 +30,10 @@ const TableSamplePagos_servicios = ({
   filters,
   showGrid,
 }) => {
+  const notify = (type, msg) => toast(msg, { type, position: 'bottom-center' });
+
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const notify = (type, msg) => toast(msg, { type, position: 'bottom-center' });
 
   const pagesList = [];
   const [id, setId] = useState(null);
@@ -46,6 +47,7 @@ const TableSamplePagos_servicios = ({
       sort: 'desc',
     },
   ]);
+
   const {
     pagos_servicios,
     loading,
@@ -57,9 +59,6 @@ const TableSamplePagos_servicios = ({
   const focusRing = useAppSelector((state) => state.style.focusRingColor);
   const bgColor = useAppSelector((state) => state.style.bgLayoutColor);
   const corners = useAppSelector((state) => state.style.corners);
-
-  const organizationId = currentUser?.organization?.id;
-
   const numPages =
     Math.floor(count / perPage) === 0 ? 1 : Math.ceil(count / perPage);
   for (let i = 0; i < numPages; i++) {
@@ -71,7 +70,7 @@ const TableSamplePagos_servicios = ({
     if (request !== filterRequest) setFilterRequest(request);
     const { sort, field } = sortModel[0];
 
-    const query = `?organization=${organizationId}&page=${page}&limit=${perPage}${request}&sort=${sort}&field=${field}`;
+    const query = `?page=${page}&limit=${perPage}${request}&sort=${sort}&field=${field}`;
     dispatch(fetch({ limit: perPage, page, query }));
   };
 
@@ -104,14 +103,6 @@ const TableSamplePagos_servicios = ({
     setIsModalTrashActive(false);
   };
 
-  const handleEditAction = (id: string) => {
-    router.push(`/pagos_servicios/${id}`);
-  };
-
-  const handleViewAction = (id: string) => {
-    router.push(`/pagos_servicios/pagos_servicios-view/?id=${id}`);
-  };
-
   const handleDeleteModalAction = (id: string) => {
     setId(id);
     setIsModalTrashActive(true);
@@ -127,13 +118,27 @@ const TableSamplePagos_servicios = ({
   const generateFilterRequests = useMemo(() => {
     let request = '&';
     filterItems.forEach((item) => {
-      filters.find(
+      const isRangeFilter = filters.find(
         (filter) =>
           filter.title === item.fields.selectedField &&
           (filter.number || filter.date),
-      )
-        ? (request += `${item.fields.selectedField}Range=${item.fields.filterValueFrom}&${item.fields.selectedField}Range=${item.fields.filterValueTo}&`)
-        : (request += `${item.fields.selectedField}=${item.fields.filterValue}&`);
+      );
+
+      if (isRangeFilter) {
+        const from = item.fields.filterValueFrom;
+        const to = item.fields.filterValueTo;
+        if (from) {
+          request += `${item.fields.selectedField}Range=${from}&`;
+        }
+        if (to) {
+          request += `${item.fields.selectedField}Range=${to}&`;
+        }
+      } else {
+        const value = item.fields.filterValue;
+        if (value) {
+          request += `${item.fields.selectedField}=${value}&`;
+        }
+      }
     });
     return request;
   }, [filterItems, filters]);
@@ -145,6 +150,7 @@ const TableSamplePagos_servicios = ({
       setFilterItems(newItems);
     } else {
       loadData(0, '');
+
       setFilterItems(newItems);
     }
   };
@@ -158,11 +164,12 @@ const TableSamplePagos_servicios = ({
     const name = e.target.name;
 
     setFilterItems(
-      filterItems.map((item) =>
-        item.id === id
-          ? { id, fields: { ...item.fields, [name]: value } }
-          : item,
-      ),
+      filterItems.map((item) => {
+        if (item.id !== id) return item;
+        if (name === 'selectedField') return { id, fields: { [name]: value } };
+
+        return { id, fields: { ...item.fields, [name]: value } };
+      }),
     );
   };
 
@@ -179,13 +186,9 @@ const TableSamplePagos_servicios = ({
   useEffect(() => {
     if (!currentUser) return;
 
-    loadColumns(
-      handleDeleteModalAction,
-      handleViewAction,
-      handleEditAction,
-      `pagos_servicios`,
-      currentUser,
-    ).then((newCols) => setColumns(newCols));
+    loadColumns(handleDeleteModalAction, `pagos_servicios`, currentUser).then(
+      (newCols) => setColumns(newCols),
+    );
   }, [currentUser]);
 
   const handleTableSubmit = async (id: string, data) => {
@@ -288,7 +291,7 @@ const TableSamplePagos_servicios = ({
                             name='selectedField'
                             id='selectedField'
                             component='select'
-                            value={filterItem?.fields?.selectedField}
+                            value={filterItem?.fields?.selectedField || ''}
                             onChange={handleChange(filterItem.id)}
                           >
                             {filters.map((selectOption) => (
@@ -310,6 +313,7 @@ const TableSamplePagos_servicios = ({
                             <Field
                               className={controlClasses}
                               name='filterValue'
+                              id='filterValue'
                               component='select'
                               value={filterItem?.fields?.filterValue || ''}
                               onChange={handleChange(filterItem.id)}
@@ -343,6 +347,9 @@ const TableSamplePagos_servicios = ({
                                 name='filterValueFrom'
                                 placeholder='From'
                                 id='filterValueFrom'
+                                value={
+                                  filterItem?.fields?.filterValueFrom || ''
+                                }
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -355,6 +362,7 @@ const TableSamplePagos_servicios = ({
                                 name='filterValueTo'
                                 placeholder='to'
                                 id='filterValueTo'
+                                value={filterItem?.fields?.filterValueTo || ''}
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -375,6 +383,9 @@ const TableSamplePagos_servicios = ({
                                 placeholder='From'
                                 id='filterValueFrom'
                                 type='datetime-local'
+                                value={
+                                  filterItem?.fields?.filterValueFrom || ''
+                                }
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -388,6 +399,7 @@ const TableSamplePagos_servicios = ({
                                 placeholder='to'
                                 id='filterValueTo'
                                 type='datetime-local'
+                                value={filterItem?.fields?.filterValueTo || ''}
                                 onChange={handleChange(filterItem.id)}
                               />
                             </div>
@@ -402,6 +414,7 @@ const TableSamplePagos_servicios = ({
                               name='filterValue'
                               placeholder='Contained'
                               id='filterValue'
+                              value={filterItem?.fields?.filterValue || ''}
                               onChange={handleChange(filterItem.id)}
                             />
                           </div>
@@ -457,8 +470,6 @@ const TableSamplePagos_servicios = ({
         <ListPagos_servicios
           pagos_servicios={pagos_servicios}
           loading={loading}
-          onView={handleViewAction}
-          onEdit={handleEditAction}
           onDelete={handleDeleteModalAction}
           currentPage={currentPage}
           numPages={numPages}
@@ -478,7 +489,6 @@ const TableSamplePagos_servicios = ({
           />,
           document.getElementById('delete-rows-button'),
         )}
-
       <ToastContainer />
     </>
   );

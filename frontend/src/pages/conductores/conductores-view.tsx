@@ -51,7 +51,11 @@ const ConductoresView = () => {
           title={removeLastCharacter('View conductores')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/conductores/conductores-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

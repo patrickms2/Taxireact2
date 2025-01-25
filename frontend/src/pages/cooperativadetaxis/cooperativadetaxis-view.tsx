@@ -53,7 +53,11 @@ const CooperativadetaxisView = () => {
           title={removeLastCharacter('View cooperativadetaxis')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/cooperativadetaxis/cooperativadetaxis-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

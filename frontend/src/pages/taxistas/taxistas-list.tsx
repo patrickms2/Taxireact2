@@ -36,6 +36,7 @@ const TaxistasTablesPage = () => {
     { label: 'Teléfono', title: 'telefono' },
 
     { label: 'FechadeRegistro', title: 'fecha_registro', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
 
     {
@@ -142,6 +143,7 @@ const TaxistasTablesPage = () => {
             <Link href={'/taxistas/taxistas-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableTaxistas
             filterItems={filterItems}

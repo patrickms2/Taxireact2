@@ -39,6 +39,7 @@ const Localizacion_taxisTablesPage = () => {
       title: 'ultima_actualizacion',
       date: 'true',
     },
+
     { label: 'Taxi', title: 'taxi' },
   ]);
 

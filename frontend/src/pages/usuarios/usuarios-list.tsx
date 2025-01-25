@@ -140,6 +140,7 @@ const UsuariosTablesPage = () => {
             <Link href={'/usuarios/usuarios-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableUsuarios
             filterItems={filterItems}

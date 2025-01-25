@@ -32,7 +32,9 @@ const DocumentosTablesPage = () => {
     { label: 'NombredelDocumento', title: 'nombre' },
 
     { label: 'FechadeCreación', title: 'fecha_creacion', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
+
     { label: 'Departamento', title: 'departamento' },
 
     {
@@ -139,6 +141,7 @@ const DocumentosTablesPage = () => {
             <Link href={'/documentos/documentos-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableDocumentos
             filterItems={filterItems}
