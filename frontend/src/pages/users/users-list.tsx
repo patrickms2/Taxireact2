@@ -35,7 +35,9 @@ const UsersTablesPage = () => {
     { label: 'E-Mail', title: 'email' },
 
     { label: 'App Role', title: 'app_role' },
+
     { label: 'Cooperativadetaxis', title: 'cooperativadetaxi' },
+
     { label: 'Custom Permissions', title: 'custom_permissions' },
   ]);
 
@@ -135,6 +137,7 @@ const UsersTablesPage = () => {
             <div id='delete-rows-button'></div>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableUsers
             filterItems={filterItems}

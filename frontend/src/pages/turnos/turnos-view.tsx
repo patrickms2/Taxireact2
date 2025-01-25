@@ -51,7 +51,11 @@ const TurnosView = () => {
           title={removeLastCharacter('View turnos')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/turnos/turnos-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

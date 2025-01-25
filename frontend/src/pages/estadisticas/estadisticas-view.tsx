@@ -51,7 +51,11 @@ const EstadisticasView = () => {
           title={removeLastCharacter('View estadisticas')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/estadisticas/estadisticas-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

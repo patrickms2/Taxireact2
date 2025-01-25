@@ -34,6 +34,7 @@ const Pagos_serviciosTablesPage = () => {
   const [filters] = useState([
     { label: 'Monto', title: 'monto', number: 'true' },
     { label: 'FechadePago', title: 'fecha_pago', date: 'true' },
+
     { label: 'ServiciodeTaxi', title: 'servicio_taxi' },
 
     {

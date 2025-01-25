@@ -51,7 +51,11 @@ const PermissionsView = () => {
           title={removeLastCharacter('View permissions')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/permissions/permissions-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

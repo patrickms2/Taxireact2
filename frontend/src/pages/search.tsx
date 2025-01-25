@@ -26,7 +26,7 @@ const SearchView = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const { currentUser } = useAppSelector((state) => state.auth);
-  const organizationId = currentUser?.organization?.id;
+  const CooperativadeTaxisId = currentUser?.CooperativadeTaxis?.id;
 
   useEffect(() => {
     dispatch(fetchData());
@@ -37,7 +37,7 @@ const SearchView = () => {
     try {
       const response = await axios.post('/search', {
         searchQuery,
-        organizationId,
+        CooperativadeTaxisId,
       });
       setSearchResults(response.data);
       setLoading(false);

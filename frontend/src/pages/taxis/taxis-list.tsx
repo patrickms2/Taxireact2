@@ -141,6 +141,7 @@ const TaxisTablesPage = () => {
             <Link href={'/taxis/taxis-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableTaxis
             filterItems={filterItems}

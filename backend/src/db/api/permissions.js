@@ -136,14 +136,19 @@ module.exports = class PermissionsDBApi {
   static async findAll(filter, options) {
     const limit = filter.limit || 0;
     let offset = 0;
+    let where = {};
     const currentPage = +filter.page;
+
+    const user = (options && options.currentUser) || null;
+    const userCooperativadetaxis =
+      (user && user.CooperativadeTaxis?.id) || null;
 
     offset = currentPage * limit;
 
     const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
-    let where = {};
+
     let include = [];
 
     if (filter) {
@@ -161,12 +166,7 @@ module.exports = class PermissionsDBApi {
         };
       }
 
-      if (
-        filter.active === true ||
-        filter.active === 'true' ||
-        filter.active === false ||
-        filter.active === 'false'
-      ) {
+      if (filter.active !== undefined) {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
@@ -198,43 +198,36 @@ module.exports = class PermissionsDBApi {
       }
     }
 
-    let { rows, count } = options?.countOnly
-      ? {
-          rows: [],
-          count: await db.permissions.count({
-            where,
-            where,
-            include,
-            distinct: true,
-            limit: limit ? Number(limit) : undefined,
-            offset: offset ? Number(offset) : undefined,
-            order:
-              filter.field && filter.sort
-                ? [[filter.field, filter.sort]]
-                : [['createdAt', 'desc']],
-            transaction,
-          }),
-        }
-      : await db.permissions.findAndCountAll({
-          where,
-          where,
-          include,
-          distinct: true,
-          limit: limit ? Number(limit) : undefined,
-          offset: offset ? Number(offset) : undefined,
-          order:
-            filter.field && filter.sort
-              ? [[filter.field, filter.sort]]
-              : [['createdAt', 'desc']],
-          transaction,
-        });
+    const queryOptions = {
+      where,
+      include,
+      distinct: true,
+      order:
+        filter.field && filter.sort
+          ? [[filter.field, filter.sort]]
+          : [['createdAt', 'desc']],
+      transaction: options?.transaction,
+      logging: console.log,
+    };
 
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
+    if (!options?.countOnly) {
+      queryOptions.limit = limit ? Number(limit) : undefined;
+      queryOptions.offset = offset ? Number(offset) : undefined;
+    }
 
-    return { rows, count };
+    try {
+      const { rows, count } = await db.permissions.findAndCountAll(
+        queryOptions,
+      );
+
+      return {
+        rows: options?.countOnly ? [] : rows,
+        count: count,
+      };
+    } catch (error) {
+      console.error('Error executing query:', error);
+      throw error;
+    }
   }
 
   static async findAllAutocomplete(query, limit, offset) {

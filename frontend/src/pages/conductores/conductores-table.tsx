@@ -38,6 +38,7 @@ const ConductoresTablesPage = () => {
     { label: 'LicenciadeConducir', title: 'licencia_conducir' },
 
     { label: 'FechadeNacimiento', title: 'fecha_nacimiento', date: 'true' },
+
     { label: 'Taxista', title: 'taxista' },
   ]);
 

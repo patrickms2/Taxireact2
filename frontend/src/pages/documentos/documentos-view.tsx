@@ -51,7 +51,11 @@ const DocumentosView = () => {
           title={removeLastCharacter('View documentos')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/documentos/documentos-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

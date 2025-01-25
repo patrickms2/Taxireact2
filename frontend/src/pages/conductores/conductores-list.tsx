@@ -38,6 +38,7 @@ const ConductoresTablesPage = () => {
     { label: 'LicenciadeConducir', title: 'licencia_conducir' },
 
     { label: 'FechadeNacimiento', title: 'fecha_nacimiento', date: 'true' },
+
     { label: 'Taxista', title: 'taxista' },
   ]);
 
@@ -137,6 +138,7 @@ const ConductoresTablesPage = () => {
             <Link href={'/conductores/conductores-table'}>Switch to Table</Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableConductores
             filterItems={filterItems}

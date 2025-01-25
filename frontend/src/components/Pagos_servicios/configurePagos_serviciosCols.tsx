@@ -19,8 +19,6 @@ type Params = (id: string) => void;
 
 export const loadColumns = async (
   onDelete: Params,
-  onView: Params,
-  onEdit: Params,
   entityName: string,
 
   user,
@@ -136,8 +134,6 @@ export const loadColumns = async (
         return [
           <ListActionsPopover
             onDelete={onDelete}
-            onView={onView}
-            onEdit={onEdit}
             itemId={params?.row?.id}
             pathEdit={`/pagos_servicios/pagos_servicios-edit/?id=${params?.row?.id}`}
             pathView={`/pagos_servicios/pagos_servicios-view/?id=${params?.row?.id}`}

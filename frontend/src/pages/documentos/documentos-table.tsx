@@ -32,7 +32,9 @@ const DocumentosTablesPage = () => {
     { label: 'NombredelDocumento', title: 'nombre' },
 
     { label: 'FechadeCreación', title: 'fecha_creacion', date: 'true' },
+
     { label: 'Usuario', title: 'usuario' },
+
     { label: 'Departamento', title: 'departamento' },
 
     {

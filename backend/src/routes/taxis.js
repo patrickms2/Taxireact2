@@ -314,7 +314,10 @@ router.get(
 
     const globalAccess = req.currentUser.app_role.globalAccess;
 
-    const payload = await TaxisDBApi.findAll(req.query, globalAccess);
+    const currentUser = req.currentUser;
+    const payload = await TaxisDBApi.findAll(req.query, globalAccess, {
+      currentUser,
+    });
     if (filetype && filetype === 'csv') {
       const fields = ['id', 'matricula', 'marca', 'modelo', 'color', 'año'];
       const opts = { fields };
@@ -361,8 +364,10 @@ router.get(
   wrapAsync(async (req, res) => {
     const globalAccess = req.currentUser.app_role.globalAccess;
 
+    const currentUser = req.currentUser;
     const payload = await TaxisDBApi.findAll(req.query, globalAccess, {
       countOnly: true,
+      currentUser,
     });
 
     res.status(200).send(payload);

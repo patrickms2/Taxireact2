@@ -51,7 +51,11 @@ const UsuariosView = () => {
           title={removeLastCharacter('View usuarios')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/usuarios/usuarios-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

@@ -6,6 +6,7 @@ import dataFormatter from '../../helpers/dataFormatter';
 import { Pagination } from '../Pagination';
 import { saveFile } from '../../helpers/fileSaver';
 import LoadingSpinner from '../LoadingSpinner';
+import Link from 'next/link';
 
 import { hasPermission } from '../../helpers/userPermissions';
 
@@ -13,18 +14,14 @@ type Props = {
   usuarios: any[];
   loading: boolean;
   onDelete: (id: string) => void;
-  onView: (id: string) => void;
-  onEdit: (id: string) => void;
   currentPage: number;
   numPages: number;
   onPageChange: (page: number) => void;
 };
 
-const CardUsers = ({
+const CardUsuarios = ({
   usuarios,
   loading,
-  onEdit,
-  onView,
   onDelete,
   currentPage,
   numPages,
@@ -61,18 +58,16 @@ const CardUsers = ({
               <div
                 className={`flex items-center ${bgColor} p-6  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative`}
               >
-                <button
+                <Link
+                  href={`/usuarios/usuarios-view/?id=${item.id}`}
                   className='text-lg font-bold leading-6 line-clamp-1'
-                  onClick={() => onView(item.id)}
                 >
                   {item.nombre}
-                </button>
+                </Link>
 
                 <div className='ml-auto '>
                   <ListActionsPopover
                     onDelete={onDelete}
-                    onView={onView}
-                    onEdit={onEdit}
                     itemId={item.id}
                     pathEdit={`/usuarios/usuarios-edit/?id=${item.id}`}
                     pathView={`/usuarios/usuarios-view/?id=${item.id}`}
@@ -164,4 +159,4 @@ const CardUsers = ({
   );
 };
 
-export default CardUsers;
+export default CardUsuarios;

@@ -6,6 +6,7 @@ import dataFormatter from '../../helpers/dataFormatter';
 import { Pagination } from '../Pagination';
 import { saveFile } from '../../helpers/fileSaver';
 import LoadingSpinner from '../LoadingSpinner';
+import Link from 'next/link';
 
 import { hasPermission } from '../../helpers/userPermissions';
 
@@ -13,18 +14,14 @@ type Props = {
   servicios_taxi: any[];
   loading: boolean;
   onDelete: (id: string) => void;
-  onView: (id: string) => void;
-  onEdit: (id: string) => void;
   currentPage: number;
   numPages: number;
   onPageChange: (page: number) => void;
 };
 
-const CardUsers = ({
+const CardServicios_taxi = ({
   servicios_taxi,
   loading,
-  onEdit,
-  onView,
   onDelete,
   currentPage,
   numPages,
@@ -64,18 +61,16 @@ const CardUsers = ({
               <div
                 className={`flex items-center ${bgColor} p-6  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative`}
               >
-                <button
+                <Link
+                  href={`/servicios_taxi/servicios_taxi-view/?id=${item.id}`}
                   className='text-lg font-bold leading-6 line-clamp-1'
-                  onClick={() => onView(item.id)}
                 >
                   {item.tipo_servicio}
-                </button>
+                </Link>
 
                 <div className='ml-auto '>
                   <ListActionsPopover
                     onDelete={onDelete}
-                    onView={onView}
-                    onEdit={onEdit}
                     itemId={item.id}
                     pathEdit={`/servicios_taxi/servicios_taxi-edit/?id=${item.id}`}
                     pathView={`/servicios_taxi/servicios_taxi-view/?id=${item.id}`}
@@ -178,4 +173,4 @@ const CardUsers = ({
   );
 };
 
-export default CardUsers;
+export default CardServicios_taxi;

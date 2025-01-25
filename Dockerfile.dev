@@ -45,4 +45,12 @@ ENV FRONT_PORT=3001
 ENV APP_SHELL_PORT=4000
 
 # Start Nginx and application servers with logging
-CMD ["sh", "-c", "concurrently --kill-others-on-fail \"yarn --cwd /app/frontend dev\" \"yarn --cwd /app/backend start\" \"yarn --cwd /app/app-shell start\" \"sleep 10 && nginx -g 'daemon off;'\""]
+CMD ["sh", "-c", "\
+    yarn --cwd /app/app-shell start & \
+    APP_SHELL_PID=$! && \
+    sleep 5 && \
+    concurrently --kill-others-on-fail \
+    \"yarn --cwd /app/frontend dev\" \
+    \"yarn --cwd /app/backend start\" \
+    \"sleep 10 && nginx -g 'daemon off;'\" \
+    || kill $APP_SHELL_PID"]

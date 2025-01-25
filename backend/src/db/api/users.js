@@ -280,38 +280,81 @@ module.exports = class UsersDBApi {
   static async findAll(filter, globalAccess, options) {
     const limit = filter.limit || 0;
     let offset = 0;
+    let where = {};
     const currentPage = +filter.page;
+
+    const user = (options && options.currentUser) || null;
+    const userCooperativadetaxis =
+      (user && user.CooperativadeTaxis?.id) || null;
+
+    if (userCooperativadetaxis) {
+      if (options?.currentUser?.CooperativadeTaxisId) {
+        where.CooperativadeTaxisId = options.currentUser.CooperativadeTaxisId;
+      }
+    }
 
     offset = currentPage * limit;
 
     const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
-    let where = {};
+
     let include = [
       {
         model: db.roles,
         as: 'app_role',
+
+        where: filter.app_role
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.app_role
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  name: {
+                    [Op.or]: filter.app_role
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
         model: db.cooperativadetaxis,
         as: 'cooperativadetaxi',
+
+        where: filter.cooperativadetaxi
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.cooperativadetaxi
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  name: {
+                    [Op.or]: filter.cooperativadetaxi
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
         model: db.permissions,
         as: 'custom_permissions',
-        through: filter.custom_permissions
-          ? {
-              where: {
-                [Op.or]: filter.custom_permissions.split('|').map((item) => {
-                  return { ['Id']: Utils.uuid(item) };
-                }),
-              },
-            }
-          : null,
-        required: filter.custom_permissions ? true : null,
       },
 
       {
@@ -440,12 +483,7 @@ module.exports = class UsersDBApi {
         }
       }
 
-      if (
-        filter.active === true ||
-        filter.active === 'true' ||
-        filter.active === false ||
-        filter.active === 'false'
-      ) {
+      if (filter.active !== undefined) {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
@@ -466,26 +504,36 @@ module.exports = class UsersDBApi {
         };
       }
 
-      if (filter.app_role) {
-        const listItems = filter.app_role.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
+      if (filter.custom_permissions) {
+        const searchTerms = filter.custom_permissions.split('|');
 
-        where = {
-          ...where,
-          app_roleId: { [Op.or]: listItems },
-        };
-      }
-
-      if (filter.cooperativadetaxi) {
-        const listItems = filter.cooperativadetaxi.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          cooperativadetaxiId: { [Op.or]: listItems },
-        };
+        include = [
+          {
+            model: db.permissions,
+            as: 'custom_permissions_filter',
+            required: searchTerms.length > 0,
+            where:
+              searchTerms.length > 0
+                ? {
+                    [Op.or]: [
+                      {
+                        id: {
+                          [Op.in]: searchTerms.map((term) => Utils.uuid(term)),
+                        },
+                      },
+                      {
+                        name: {
+                          [Op.or]: searchTerms.map((term) => ({
+                            [Op.iLike]: `%${term}%`,
+                          })),
+                        },
+                      },
+                    ],
+                  }
+                : undefined,
+          },
+          ...include,
+        ];
       }
 
       if (filter.createdAtRange) {
@@ -517,43 +565,34 @@ module.exports = class UsersDBApi {
       delete where.organizationId;
     }
 
-    let { rows, count } = options?.countOnly
-      ? {
-          rows: [],
-          count: await db.users.count({
-            where: globalAccess ? {} : where,
-            where,
-            include,
-            distinct: true,
-            limit: limit ? Number(limit) : undefined,
-            offset: offset ? Number(offset) : undefined,
-            order:
-              filter.field && filter.sort
-                ? [[filter.field, filter.sort]]
-                : [['createdAt', 'desc']],
-            transaction,
-          }),
-        }
-      : await db.users.findAndCountAll({
-          where: globalAccess ? {} : where,
-          where,
-          include,
-          distinct: true,
-          limit: limit ? Number(limit) : undefined,
-          offset: offset ? Number(offset) : undefined,
-          order:
-            filter.field && filter.sort
-              ? [[filter.field, filter.sort]]
-              : [['createdAt', 'desc']],
-          transaction,
-        });
+    const queryOptions = {
+      where,
+      include,
+      distinct: true,
+      order:
+        filter.field && filter.sort
+          ? [[filter.field, filter.sort]]
+          : [['createdAt', 'desc']],
+      transaction: options?.transaction,
+      logging: console.log,
+    };
 
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
+    if (!options?.countOnly) {
+      queryOptions.limit = limit ? Number(limit) : undefined;
+      queryOptions.offset = offset ? Number(offset) : undefined;
+    }
 
-    return { rows, count };
+    try {
+      const { rows, count } = await db.users.findAndCountAll(queryOptions);
+
+      return {
+        rows: options?.countOnly ? [] : rows,
+        count: count,
+      };
+    } catch (error) {
+      console.error('Error executing query:', error);
+      throw error;
+    }
   }
 
   static async findAllAutocomplete(

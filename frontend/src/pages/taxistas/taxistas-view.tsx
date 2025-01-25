@@ -51,7 +51,11 @@ const TaxistasView = () => {
           title={removeLastCharacter('View taxistas')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/taxistas/taxistas-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

@@ -51,7 +51,11 @@ const RolesView = () => {
           title={removeLastCharacter('View roles')}
           main
         >
-          {''}
+          <BaseButton
+            color='info'
+            label='Edit'
+            href={`/roles/roles-edit/?id=${id}`}
+          />
         </SectionTitleLineWithButton>
         <CardBox>
           <div className={'mb-4'}>

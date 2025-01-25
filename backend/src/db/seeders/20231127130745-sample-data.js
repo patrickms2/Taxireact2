@@ -29,15 +29,15 @@ const ConductoresData = [
   {
     // type code here for "relation_one" field
 
-    nombre: 'Joseph J. Thomson',
+    nombre: 'Arthur Eddington',
 
-    apellidos: 'William Herschel',
+    apellidos: 'Andreas Vesalius',
 
-    dni: 'Robert Koch',
+    dni: 'John von Neumann',
 
     fecha_nacimiento: new Date(),
 
-    licencia_conducir: 'Comte de Buffon',
+    licencia_conducir: 'Thomas Hunt Morgan',
 
     // type code here for "relation_one" field
   },
@@ -45,15 +45,15 @@ const ConductoresData = [
   {
     // type code here for "relation_one" field
 
-    nombre: 'Frederick Sanger',
+    nombre: 'Charles Darwin',
 
-    apellidos: 'Paul Dirac',
+    apellidos: 'Jean Baptiste Lamarck',
 
-    dni: 'Francis Galton',
+    dni: 'Louis Pasteur',
 
     fecha_nacimiento: new Date(),
 
-    licencia_conducir: 'Galileo Galilei',
+    licencia_conducir: 'Edward Teller',
 
     // type code here for "relation_one" field
   },
@@ -61,15 +61,31 @@ const ConductoresData = [
   {
     // type code here for "relation_one" field
 
-    nombre: 'Michael Faraday',
+    nombre: 'Theodosius Dobzhansky',
 
-    apellidos: 'James Clerk Maxwell',
+    apellidos: 'Alfred Binet',
 
-    dni: 'Neils Bohr',
+    dni: 'Paul Dirac',
 
     fecha_nacimiento: new Date(),
 
-    licencia_conducir: 'Francis Crick',
+    licencia_conducir: 'Erwin Schrodinger',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    nombre: 'Enrico Fermi',
+
+    apellidos: 'Johannes Kepler',
+
+    dni: 'Karl Landsteiner',
+
+    fecha_nacimiento: new Date(),
+
+    licencia_conducir: 'Louis Victor de Broglie',
 
     // type code here for "relation_one" field
   },
@@ -77,19 +93,25 @@ const ConductoresData = [
 
 const DepartamentosData = [
   {
-    nombre_departamento: 'Wilhelm Wundt',
+    nombre_departamento: 'Sheldon Glashow',
 
     // type code here for "relation_one" field
   },
 
   {
-    nombre_departamento: 'William Harvey',
+    nombre_departamento: 'Max Born',
 
     // type code here for "relation_one" field
   },
 
   {
-    nombre_departamento: 'Frederick Sanger',
+    nombre_departamento: 'Christiaan Huygens',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    nombre_departamento: 'Charles Lyell',
 
     // type code here for "relation_one" field
   },
@@ -97,21 +119,7 @@ const DepartamentosData = [
 
 const DocumentosData = [
   {
-    nombre: 'Ludwig Boltzmann',
-
-    tipo_documento: 'Licencia',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    fecha_creacion: new Date(),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    nombre: 'Emil Kraepelin',
+    nombre: 'Max Born',
 
     tipo_documento: 'Factura',
 
@@ -125,9 +133,37 @@ const DocumentosData = [
   },
 
   {
-    nombre: 'Paul Ehrlich',
+    nombre: 'Carl Linnaeus',
 
-    tipo_documento: 'Licencia',
+    tipo_documento: 'Contrato',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    fecha_creacion: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    nombre: 'Marcello Malpighi',
+
+    tipo_documento: 'Contrato',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    fecha_creacion: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    nombre: 'Frederick Gowland Hopkins',
+
+    tipo_documento: 'Permiso',
 
     // type code here for "relation_one" field
 
@@ -141,7 +177,7 @@ const DocumentosData = [
 
 const EstadisticasData = [
   {
-    tipo_estadistica: 'Servicios',
+    tipo_estadistica: 'Documentos',
 
     fecha: new Date(),
 
@@ -154,6 +190,18 @@ const EstadisticasData = [
 
   {
     tipo_estadistica: 'Documentos',
+
+    fecha: new Date(),
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    tipo_estadistica: 'Servicios',
 
     fecha: new Date(),
 
@@ -181,21 +229,9 @@ const LocalizacionTaxisData = [
   {
     // type code here for "relation_one" field
 
-    latitud: 94.71,
+    latitud: 92.34,
 
-    longitud: 61.76,
-
-    ultima_actualizacion: new Date(),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    latitud: 55.53,
-
-    longitud: 64.69,
+    longitud: 95.86,
 
     ultima_actualizacion: new Date(),
 
@@ -205,9 +241,33 @@ const LocalizacionTaxisData = [
   {
     // type code here for "relation_one" field
 
-    latitud: 67.24,
+    latitud: 97.03,
 
-    longitud: 79.41,
+    longitud: 43.72,
+
+    ultima_actualizacion: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    latitud: 25.13,
+
+    longitud: 91.12,
+
+    ultima_actualizacion: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    latitud: 91.72,
+
+    longitud: 13.38,
 
     ultima_actualizacion: new Date(),
 
@@ -219,27 +279,11 @@ const PagosServiciosData = [
   {
     // type code here for "relation_one" field
 
-    monto: 56.46,
-
-    tipo_pago: 'Pagocompleto',
-
-    metodo_pago: 'Tarjeta',
-
-    fecha_pago: new Date(),
-
-    estado_pago: 'Reembolsado',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    monto: 87.07,
+    monto: 10.76,
 
     tipo_pago: 'Pagoendestino',
 
-    metodo_pago: 'Efectivo',
+    metodo_pago: 'Tarjeta',
 
     fecha_pago: new Date(),
 
@@ -251,15 +295,47 @@ const PagosServiciosData = [
   {
     // type code here for "relation_one" field
 
-    monto: 32.05,
+    monto: 33.34,
 
-    tipo_pago: 'Pagoendestino',
+    tipo_pago: 'Pagocompleto',
+
+    metodo_pago: 'Transferencia',
+
+    fecha_pago: new Date(),
+
+    estado_pago: 'Reembolsado',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    monto: 26.61,
+
+    tipo_pago: 'Depósito',
 
     metodo_pago: 'Efectivo',
 
     fecha_pago: new Date(),
 
     estado_pago: 'Pendiente',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    monto: 57.51,
+
+    tipo_pago: 'Pagocompleto',
+
+    metodo_pago: 'Tarjeta',
+
+    fecha_pago: new Date(),
+
+    estado_pago: 'Pagado',
 
     // type code here for "relation_one" field
   },
@@ -275,11 +351,11 @@ const ServiciosTaxiData = [
 
     fecha_realizacion: new Date(),
 
-    estado_servicio: 'Pendiente',
+    estado_servicio: 'Encurso',
 
-    ubicacion_origen: 'Gustav Kirchhoff',
+    ubicacion_origen: 'Gregor Mendel',
 
-    ubicacion_destino: 'Trofim Lysenko',
+    ubicacion_destino: 'Lynn Margulis',
 
     // type code here for "relation_one" field
   },
@@ -295,9 +371,9 @@ const ServiciosTaxiData = [
 
     estado_servicio: 'Encurso',
 
-    ubicacion_origen: 'Carl Gauss (Karl Friedrich Gauss)',
+    ubicacion_origen: 'Max Planck',
 
-    ubicacion_destino: 'Frederick Gowland Hopkins',
+    ubicacion_destino: 'Albrecht von Haller',
 
     // type code here for "relation_one" field
   },
@@ -305,7 +381,25 @@ const ServiciosTaxiData = [
   {
     // type code here for "relation_one" field
 
-    tipo_servicio: 'ReservaHotel',
+    tipo_servicio: 'Traslado',
+
+    fecha_solicitud: new Date(),
+
+    fecha_realizacion: new Date(),
+
+    estado_servicio: 'Cancelado',
+
+    ubicacion_origen: 'Rudolf Virchow',
+
+    ubicacion_destino: 'B. F. Skinner',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    tipo_servicio: 'Traslado',
 
     fecha_solicitud: new Date(),
 
@@ -313,9 +407,9 @@ const ServiciosTaxiData = [
 
     estado_servicio: 'Encurso',
 
-    ubicacion_origen: 'Christiaan Huygens',
+    ubicacion_origen: 'Frederick Gowland Hopkins',
 
-    ubicacion_destino: 'Frederick Gowland Hopkins',
+    ubicacion_destino: 'Jean Baptiste Lamarck',
 
     // type code here for "relation_one" field
   },
@@ -325,35 +419,17 @@ const TaxisData = [
   {
     // type code here for "relation_one" field
 
-    matricula: 'Archimedes',
+    matricula: 'John Bardeen',
 
-    marca: 'John Dalton',
+    marca: 'Claude Bernard',
 
-    modelo: 'Comte de Buffon',
+    modelo: 'Francis Crick',
 
-    año: 2,
+    año: 6,
 
-    color: 'Paul Dirac',
+    color: 'Louis Pasteur',
 
-    estado: 'Baja',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    matricula: 'Sigmund Freud',
-
-    marca: 'Gertrude Belle Elion',
-
-    modelo: 'Heike Kamerlingh Onnes',
-
-    año: 8,
-
-    color: 'William Bayliss',
-
-    estado: 'Baja',
+    estado: 'Mantenimiento',
 
     // type code here for "relation_one" field
   },
@@ -361,15 +437,51 @@ const TaxisData = [
   {
     // type code here for "relation_one" field
 
-    matricula: 'Paul Ehrlich',
+    matricula: 'B. F. Skinner',
 
-    marca: 'Max Delbruck',
+    marca: 'Michael Faraday',
 
-    modelo: 'Hermann von Helmholtz',
+    modelo: 'Thomas Hunt Morgan',
 
     año: 4,
 
-    color: 'Albert Einstein',
+    color: 'B. F. Skinner',
+
+    estado: 'Activo',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    matricula: 'Albert Einstein',
+
+    marca: 'Max Planck',
+
+    modelo: 'Hans Bethe',
+
+    año: 3,
+
+    color: 'Tycho Brahe',
+
+    estado: 'Activo',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    matricula: 'Max Delbruck',
+
+    marca: 'Linus Pauling',
+
+    modelo: 'Frederick Sanger',
+
+    año: 4,
+
+    color: 'Nicolaus Copernicus',
 
     estado: 'Activo',
 
@@ -381,35 +493,55 @@ const TaxistasData = [
   {
     // type code here for "relation_one" field
 
-    nombre: 'Marcello Malpighi',
+    nombre: 'Alfred Wegener',
 
-    apellidos: 'Frederick Gowland Hopkins',
+    apellidos: 'Ernst Haeckel',
+
+    dni: 'Arthur Eddington',
+
+    direccion: 'Alexander Fleming',
+
+    telefono: 'Francis Galton',
+
+    fecha_registro: new Date(),
+
+    estado: 'Activo',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    nombre: 'Max Planck',
+
+    apellidos: 'Alfred Kinsey',
+
+    dni: 'Charles Lyell',
+
+    direccion: 'Jean Piaget',
+
+    telefono: 'Werner Heisenberg',
+
+    fecha_registro: new Date(),
+
+    estado: 'Inactivo',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    nombre: 'B. F. Skinner',
+
+    apellidos: 'Trofim Lysenko',
 
     dni: 'Anton van Leeuwenhoek',
 
-    direccion: 'Alfred Binet',
+    direccion: 'Albrecht von Haller',
 
-    telefono: 'Andreas Vesalius',
-
-    fecha_registro: new Date(),
-
-    estado: 'Activo',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    nombre: 'Louis Pasteur',
-
-    apellidos: 'James Watson',
-
-    dni: 'Joseph J. Thomson',
-
-    direccion: 'Tycho Brahe',
-
-    telefono: 'Paul Dirac',
+    telefono: 'Tycho Brahe',
 
     fecha_registro: new Date(),
 
@@ -421,19 +553,19 @@ const TaxistasData = [
   {
     // type code here for "relation_one" field
 
-    nombre: 'Theodosius Dobzhansky',
+    nombre: 'Max Delbruck',
 
-    apellidos: 'Francis Crick',
+    apellidos: 'Albert Einstein',
 
-    dni: 'James Clerk Maxwell',
+    dni: 'Christiaan Huygens',
 
-    direccion: 'William Herschel',
+    direccion: 'Johannes Kepler',
 
-    telefono: 'Charles Darwin',
+    telefono: 'Gertrude Belle Elion',
 
     fecha_registro: new Date(),
 
-    estado: 'Activo',
+    estado: 'Inactivo',
 
     // type code here for "relation_one" field
   },
@@ -449,7 +581,21 @@ const TurnosData = [
 
     hora_fin: new Date(),
 
-    estado_turno: 'Programado',
+    estado_turno: 'Encurso',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    fecha: new Date(),
+
+    hora_inicio: new Date(),
+
+    hora_fin: new Date(),
+
+    estado_turno: 'Completado',
 
     // type code here for "relation_one" field
   },
@@ -477,7 +623,7 @@ const TurnosData = [
 
     hora_fin: new Date(),
 
-    estado_turno: 'Programado',
+    estado_turno: 'Completado',
 
     // type code here for "relation_one" field
   },
@@ -485,31 +631,15 @@ const TurnosData = [
 
 const UsuariosData = [
   {
-    nombre: 'Max Delbruck',
+    nombre: 'Joseph J. Thomson',
 
-    apellidos: 'Charles Sherrington',
+    apellidos: 'Marcello Malpighi',
 
-    email: 'Trofim Lysenko',
+    email: 'Andreas Vesalius',
 
-    password: 'B. F. Skinner',
+    password: 'Euclid',
 
-    tipo_usuario: 'Cliente',
-
-    fecha_registro: new Date(),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    nombre: 'J. Robert Oppenheimer',
-
-    apellidos: 'Francis Crick',
-
-    email: 'Charles Lyell',
-
-    password: 'Albrecht von Haller',
-
-    tipo_usuario: 'Cliente',
+    tipo_usuario: 'Taxista',
 
     fecha_registro: new Date(),
 
@@ -517,15 +647,47 @@ const UsuariosData = [
   },
 
   {
-    nombre: 'Sigmund Freud',
+    nombre: 'Charles Lyell',
 
-    apellidos: 'James Watson',
+    apellidos: 'Max Delbruck',
 
-    email: 'Albrecht von Haller',
+    email: 'Wilhelm Wundt',
 
-    password: 'Max Delbruck',
+    password: 'Robert Koch',
 
-    tipo_usuario: 'Cliente',
+    tipo_usuario: 'Hotel',
+
+    fecha_registro: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    nombre: 'Konrad Lorenz',
+
+    apellidos: 'Archimedes',
+
+    email: 'Konrad Lorenz',
+
+    password: 'Johannes Kepler',
+
+    tipo_usuario: 'Empleado',
+
+    fecha_registro: new Date(),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    nombre: 'B. F. Skinner',
+
+    apellidos: 'Albert Einstein',
+
+    email: 'Werner Heisenberg',
+
+    password: 'William Herschel',
+
+    tipo_usuario: 'Empleado',
 
     fecha_registro: new Date(),
 
@@ -535,15 +697,19 @@ const UsuariosData = [
 
 const CooperativadetaxisData = [
   {
-    name: 'Erwin Schrodinger',
+    name: 'Comte de Buffon',
   },
 
   {
-    name: 'Ludwig Boltzmann',
+    name: 'Archimedes',
   },
 
   {
-    name: 'Alfred Binet',
+    name: 'William Bayliss',
+  },
+
+  {
+    name: 'Edward Teller',
   },
 ];
 
@@ -582,6 +748,17 @@ async function associateUserWithCooperativadetaxi() {
   if (User2?.setCooperativadetaxi) {
     await User2.setCooperativadetaxi(relatedCooperativadetaxi2);
   }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const User3 = await Users.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (User3?.setCooperativadetaxi) {
+    await User3.setCooperativadetaxi(relatedCooperativadetaxi3);
+  }
 }
 
 async function associateConductoreWithTaxistum() {
@@ -616,6 +793,17 @@ async function associateConductoreWithTaxistum() {
   });
   if (Conductore2?.setTaxistum) {
     await Conductore2.setTaxistum(relatedTaxistum2);
+  }
+
+  const relatedTaxistum3 = await Taxistas.findOne({
+    offset: Math.floor(Math.random() * (await Taxistas.count())),
+  });
+  const Conductore3 = await Conductores.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Conductore3?.setTaxistum) {
+    await Conductore3.setTaxistum(relatedTaxistum3);
   }
 }
 
@@ -652,6 +840,17 @@ async function associateConductoreWithCooperativadetaxi() {
   if (Conductore2?.setCooperativadetaxi) {
     await Conductore2.setCooperativadetaxi(relatedCooperativadetaxi2);
   }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Conductore3 = await Conductores.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Conductore3?.setCooperativadetaxi) {
+    await Conductore3.setCooperativadetaxi(relatedCooperativadetaxi3);
+  }
 }
 
 async function associateDepartamentoWithCooperativadetaxi() {
@@ -686,6 +885,17 @@ async function associateDepartamentoWithCooperativadetaxi() {
   });
   if (Departamento2?.setCooperativadetaxi) {
     await Departamento2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Departamento3 = await Departamentos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Departamento3?.setCooperativadetaxi) {
+    await Departamento3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -722,6 +932,17 @@ async function associateDocumentoWithUsuario() {
   if (Documento2?.setUsuario) {
     await Documento2.setUsuario(relatedUsuario2);
   }
+
+  const relatedUsuario3 = await Usuarios.findOne({
+    offset: Math.floor(Math.random() * (await Usuarios.count())),
+  });
+  const Documento3 = await Documentos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Documento3?.setUsuario) {
+    await Documento3.setUsuario(relatedUsuario3);
+  }
 }
 
 async function associateDocumentoWithDepartamento() {
@@ -756,6 +977,17 @@ async function associateDocumentoWithDepartamento() {
   });
   if (Documento2?.setDepartamento) {
     await Documento2.setDepartamento(relatedDepartamento2);
+  }
+
+  const relatedDepartamento3 = await Departamentos.findOne({
+    offset: Math.floor(Math.random() * (await Departamentos.count())),
+  });
+  const Documento3 = await Documentos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Documento3?.setDepartamento) {
+    await Documento3.setDepartamento(relatedDepartamento3);
   }
 }
 
@@ -792,6 +1024,17 @@ async function associateDocumentoWithCooperativadetaxi() {
   if (Documento2?.setCooperativadetaxi) {
     await Documento2.setCooperativadetaxi(relatedCooperativadetaxi2);
   }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Documento3 = await Documentos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Documento3?.setCooperativadetaxi) {
+    await Documento3.setCooperativadetaxi(relatedCooperativadetaxi3);
+  }
 }
 
 async function associateEstadisticaWithUsuario() {
@@ -826,6 +1069,17 @@ async function associateEstadisticaWithUsuario() {
   });
   if (Estadistica2?.setUsuario) {
     await Estadistica2.setUsuario(relatedUsuario2);
+  }
+
+  const relatedUsuario3 = await Usuarios.findOne({
+    offset: Math.floor(Math.random() * (await Usuarios.count())),
+  });
+  const Estadistica3 = await Estadisticas.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Estadistica3?.setUsuario) {
+    await Estadistica3.setUsuario(relatedUsuario3);
   }
 }
 
@@ -862,6 +1116,17 @@ async function associateEstadisticaWithDepartamento() {
   if (Estadistica2?.setDepartamento) {
     await Estadistica2.setDepartamento(relatedDepartamento2);
   }
+
+  const relatedDepartamento3 = await Departamentos.findOne({
+    offset: Math.floor(Math.random() * (await Departamentos.count())),
+  });
+  const Estadistica3 = await Estadisticas.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Estadistica3?.setDepartamento) {
+    await Estadistica3.setDepartamento(relatedDepartamento3);
+  }
 }
 
 async function associateEstadisticaWithCooperativadetaxi() {
@@ -896,6 +1161,17 @@ async function associateEstadisticaWithCooperativadetaxi() {
   });
   if (Estadistica2?.setCooperativadetaxi) {
     await Estadistica2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Estadistica3 = await Estadisticas.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Estadistica3?.setCooperativadetaxi) {
+    await Estadistica3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -932,6 +1208,17 @@ async function associateLocalizacionTaxiWithTaxi() {
   if (LocalizacionTaxi2?.setTaxi) {
     await LocalizacionTaxi2.setTaxi(relatedTaxi2);
   }
+
+  const relatedTaxi3 = await Taxis.findOne({
+    offset: Math.floor(Math.random() * (await Taxis.count())),
+  });
+  const LocalizacionTaxi3 = await LocalizacionTaxis.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (LocalizacionTaxi3?.setTaxi) {
+    await LocalizacionTaxi3.setTaxi(relatedTaxi3);
+  }
 }
 
 async function associateLocalizacionTaxiWithCooperativadetaxi() {
@@ -966,6 +1253,17 @@ async function associateLocalizacionTaxiWithCooperativadetaxi() {
   });
   if (LocalizacionTaxi2?.setCooperativadetaxi) {
     await LocalizacionTaxi2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const LocalizacionTaxi3 = await LocalizacionTaxis.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (LocalizacionTaxi3?.setCooperativadetaxi) {
+    await LocalizacionTaxi3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -1002,6 +1300,17 @@ async function associatePagosServicioWithServicio_taxi() {
   if (PagosServicio2?.setServicio_taxi) {
     await PagosServicio2.setServicio_taxi(relatedServicio_taxi2);
   }
+
+  const relatedServicio_taxi3 = await ServiciosTaxi.findOne({
+    offset: Math.floor(Math.random() * (await ServiciosTaxi.count())),
+  });
+  const PagosServicio3 = await PagosServicios.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (PagosServicio3?.setServicio_taxi) {
+    await PagosServicio3.setServicio_taxi(relatedServicio_taxi3);
+  }
 }
 
 async function associatePagosServicioWithCooperativadetaxi() {
@@ -1036,6 +1345,17 @@ async function associatePagosServicioWithCooperativadetaxi() {
   });
   if (PagosServicio2?.setCooperativadetaxi) {
     await PagosServicio2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const PagosServicio3 = await PagosServicios.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (PagosServicio3?.setCooperativadetaxi) {
+    await PagosServicio3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -1072,6 +1392,17 @@ async function associateServiciosTaxiWithTaxi() {
   if (ServiciosTaxi2?.setTaxi) {
     await ServiciosTaxi2.setTaxi(relatedTaxi2);
   }
+
+  const relatedTaxi3 = await Taxis.findOne({
+    offset: Math.floor(Math.random() * (await Taxis.count())),
+  });
+  const ServiciosTaxi3 = await ServiciosTaxi.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (ServiciosTaxi3?.setTaxi) {
+    await ServiciosTaxi3.setTaxi(relatedTaxi3);
+  }
 }
 
 async function associateServiciosTaxiWithCooperativadetaxi() {
@@ -1106,6 +1437,17 @@ async function associateServiciosTaxiWithCooperativadetaxi() {
   });
   if (ServiciosTaxi2?.setCooperativadetaxi) {
     await ServiciosTaxi2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const ServiciosTaxi3 = await ServiciosTaxi.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (ServiciosTaxi3?.setCooperativadetaxi) {
+    await ServiciosTaxi3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -1142,6 +1484,17 @@ async function associateTaxiWithTaxistum() {
   if (Taxi2?.setTaxistum) {
     await Taxi2.setTaxistum(relatedTaxistum2);
   }
+
+  const relatedTaxistum3 = await Taxistas.findOne({
+    offset: Math.floor(Math.random() * (await Taxistas.count())),
+  });
+  const Taxi3 = await Taxis.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Taxi3?.setTaxistum) {
+    await Taxi3.setTaxistum(relatedTaxistum3);
+  }
 }
 
 async function associateTaxiWithCooperativadetaxi() {
@@ -1176,6 +1529,17 @@ async function associateTaxiWithCooperativadetaxi() {
   });
   if (Taxi2?.setCooperativadetaxi) {
     await Taxi2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Taxi3 = await Taxis.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Taxi3?.setCooperativadetaxi) {
+    await Taxi3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -1212,6 +1576,17 @@ async function associateTaxistaWithUsuario() {
   if (Taxista2?.setUsuario) {
     await Taxista2.setUsuario(relatedUsuario2);
   }
+
+  const relatedUsuario3 = await Usuarios.findOne({
+    offset: Math.floor(Math.random() * (await Usuarios.count())),
+  });
+  const Taxista3 = await Taxistas.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Taxista3?.setUsuario) {
+    await Taxista3.setUsuario(relatedUsuario3);
+  }
 }
 
 async function associateTaxistaWithCooperativadetaxi() {
@@ -1246,6 +1621,17 @@ async function associateTaxistaWithCooperativadetaxi() {
   });
   if (Taxista2?.setCooperativadetaxi) {
     await Taxista2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Taxista3 = await Taxistas.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Taxista3?.setCooperativadetaxi) {
+    await Taxista3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 
@@ -1282,6 +1668,17 @@ async function associateTurnoWithUsuario() {
   if (Turno2?.setUsuario) {
     await Turno2.setUsuario(relatedUsuario2);
   }
+
+  const relatedUsuario3 = await Usuarios.findOne({
+    offset: Math.floor(Math.random() * (await Usuarios.count())),
+  });
+  const Turno3 = await Turnos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Turno3?.setUsuario) {
+    await Turno3.setUsuario(relatedUsuario3);
+  }
 }
 
 async function associateTurnoWithCooperativadetaxi() {
@@ -1317,6 +1714,17 @@ async function associateTurnoWithCooperativadetaxi() {
   if (Turno2?.setCooperativadetaxi) {
     await Turno2.setCooperativadetaxi(relatedCooperativadetaxi2);
   }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Turno3 = await Turnos.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Turno3?.setCooperativadetaxi) {
+    await Turno3.setCooperativadetaxi(relatedCooperativadetaxi3);
+  }
 }
 
 async function associateUsuarioWithCooperativadetaxi() {
@@ -1351,6 +1759,17 @@ async function associateUsuarioWithCooperativadetaxi() {
   });
   if (Usuario2?.setCooperativadetaxi) {
     await Usuario2.setCooperativadetaxi(relatedCooperativadetaxi2);
+  }
+
+  const relatedCooperativadetaxi3 = await Cooperativadetaxis.findOne({
+    offset: Math.floor(Math.random() * (await Cooperativadetaxis.count())),
+  });
+  const Usuario3 = await Usuarios.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Usuario3?.setCooperativadetaxi) {
+    await Usuario3.setCooperativadetaxi(relatedCooperativadetaxi3);
   }
 }
 

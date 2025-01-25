@@ -39,6 +39,7 @@ const Localizacion_taxisTablesPage = () => {
       title: 'ultima_actualizacion',
       date: 'true',
     },
+
     { label: 'Taxi', title: 'taxi' },
   ]);
 
@@ -140,6 +141,7 @@ const Localizacion_taxisTablesPage = () => {
             </Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableLocalizacion_taxis
             filterItems={filterItems}

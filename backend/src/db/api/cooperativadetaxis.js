@@ -204,14 +204,25 @@ module.exports = class CooperativadetaxisDBApi {
   static async findAll(filter, globalAccess, options) {
     const limit = filter.limit || 0;
     let offset = 0;
+    let where = {};
     const currentPage = +filter.page;
+
+    const user = (options && options.currentUser) || null;
+    const userCooperativadetaxis =
+      (user && user.CooperativadeTaxis?.id) || null;
+
+    if (userCooperativadetaxis) {
+      if (options?.currentUser?.CooperativadeTaxisId) {
+        where.CooperativadeTaxisId = options.currentUser.CooperativadeTaxisId;
+      }
+    }
 
     offset = currentPage * limit;
 
     const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
-    let where = {};
+
     let include = [];
 
     if (filter) {
@@ -229,12 +240,7 @@ module.exports = class CooperativadetaxisDBApi {
         };
       }
 
-      if (
-        filter.active === true ||
-        filter.active === 'true' ||
-        filter.active === false ||
-        filter.active === 'false'
-      ) {
+      if (filter.active !== undefined) {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
@@ -270,43 +276,36 @@ module.exports = class CooperativadetaxisDBApi {
       delete where.organizationId;
     }
 
-    let { rows, count } = options?.countOnly
-      ? {
-          rows: [],
-          count: await db.cooperativadetaxis.count({
-            where: globalAccess ? {} : where,
-            where,
-            include,
-            distinct: true,
-            limit: limit ? Number(limit) : undefined,
-            offset: offset ? Number(offset) : undefined,
-            order:
-              filter.field && filter.sort
-                ? [[filter.field, filter.sort]]
-                : [['createdAt', 'desc']],
-            transaction,
-          }),
-        }
-      : await db.cooperativadetaxis.findAndCountAll({
-          where: globalAccess ? {} : where,
-          where,
-          include,
-          distinct: true,
-          limit: limit ? Number(limit) : undefined,
-          offset: offset ? Number(offset) : undefined,
-          order:
-            filter.field && filter.sort
-              ? [[filter.field, filter.sort]]
-              : [['createdAt', 'desc']],
-          transaction,
-        });
+    const queryOptions = {
+      where,
+      include,
+      distinct: true,
+      order:
+        filter.field && filter.sort
+          ? [[filter.field, filter.sort]]
+          : [['createdAt', 'desc']],
+      transaction: options?.transaction,
+      logging: console.log,
+    };
 
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
+    if (!options?.countOnly) {
+      queryOptions.limit = limit ? Number(limit) : undefined;
+      queryOptions.offset = offset ? Number(offset) : undefined;
+    }
 
-    return { rows, count };
+    try {
+      const { rows, count } = await db.cooperativadetaxis.findAndCountAll(
+        queryOptions,
+      );
+
+      return {
+        rows: options?.countOnly ? [] : rows,
+        count: count,
+      };
+    } catch (error) {
+      console.error('Error executing query:', error);
+      throw error;
+    }
   }
 
   static async findAllAutocomplete(

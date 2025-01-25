@@ -37,6 +37,7 @@ const Servicios_taxiTablesPage = () => {
 
     { label: 'FechadeSolicitud', title: 'fecha_solicitud', date: 'true' },
     { label: 'FechadeRealización', title: 'fecha_realizacion', date: 'true' },
+
     { label: 'Taxi', title: 'taxi' },
 
     {
@@ -151,6 +152,7 @@ const Servicios_taxiTablesPage = () => {
             </Link>
           </div>
         </CardBox>
+
         <CardBox className='mb-6' hasTable>
           <TableServicios_taxi
             filterItems={filterItems}
